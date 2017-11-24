@@ -6,17 +6,17 @@ import java.util.concurrent.ConcurrentHashMap;
 @SuppressWarnings("unchecked")
 public class CucumberContext {
 
-    private Map<Keys, Object> values = new ConcurrentHashMap<>();
+    private static Map<Keys, String> values = new ConcurrentHashMap<>();
 
-    public void putValue(final Keys keys, final Object value) {
+    public static void putValue(final Keys keys, final String value) {
         values.put(keys, value);
     }
 
-    public <T> T getValue(final Keys key) {
+    public static <T> T getValue(final Keys key) {
         return (T) values.get(key);
     }
 
-    public String getValueAsString(final Keys key) {
+    public static String getValueAsString(final Keys key) {
         return (String) getValue(key);
     }
 

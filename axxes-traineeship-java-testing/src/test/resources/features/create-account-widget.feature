@@ -15,5 +15,4 @@ Feature: Create account widget
     Then the new account is created
 
 
-#  Scenario: ADD ERROR CASES
 
