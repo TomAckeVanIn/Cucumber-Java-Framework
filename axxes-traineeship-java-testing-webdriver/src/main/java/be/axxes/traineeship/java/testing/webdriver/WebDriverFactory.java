@@ -22,7 +22,7 @@ public final class WebDriverFactory {
 
     public void quitWebDriver() {
         if (webDriver != null) {
-            //webDriver.quit();
+            webDriver.quit();
             webDriver = null;
         }
     }
