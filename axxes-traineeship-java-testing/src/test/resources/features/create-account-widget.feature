@@ -5,15 +5,11 @@ Feature: Create account widget
 
   Background:
     Given the user is on the sign up page
-    And navigates to the create account page tom.acke2@axxes.com
+    And navigates to the create account page
 
-  @Example
+  @Regression @CreateAccount
   Scenario: Create a new account
     When the user enters all required personal information fields:
-      |Tom|Acke|Test1234|Test street 220 Box 5|Seatle|Washington|12345|United States|012345678|Test|
+      |User|Axxes|Test1234|Test street 220 Box 5|Seatle|Washington|12345|United States|012345678|Test|
     And clicks on the register button
     Then the new account is created
-
-
-#  Scenario: ADD ERROR CASES
-

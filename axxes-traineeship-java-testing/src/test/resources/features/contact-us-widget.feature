@@ -18,6 +18,3 @@ Feature: Contact Us Widget
     Examples:
     |Heading|Email|Reference|Message|
     |Customer service|tom.acke@axxes.com|951357|test content message|
-
-#  Scenario: ADD ERROR CASES
-

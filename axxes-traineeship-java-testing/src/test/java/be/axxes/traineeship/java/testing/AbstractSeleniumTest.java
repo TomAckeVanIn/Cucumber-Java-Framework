@@ -13,12 +13,11 @@ import be.axxes.traineeship.java.testing.webdriver.pages.HomePage;
 import be.axxes.traineeship.java.testing.webdriver.pages.ItemDetailPage;
 import be.axxes.traineeship.java.testing.webdriver.pages.SignInWidget;
 import be.axxes.traineeship.java.testing.webdriver.pages.WomenClothingPage;
-import com.gargoylesoftware.htmlunit.Page;
+//import com.gargoylesoftware.htmlunit.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -68,7 +67,6 @@ public abstract class AbstractSeleniumTest {
         return getPageObject(ItemDetailPage.class);
     }
 
-    @SuppressWarnings("unchecked")
     private <T extends AbstractPage> T getPageObject(Class<T> PageObjectClassType) {
         return (T) pages
                 .stream()

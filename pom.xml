@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.5.RELEASE</version>
+        <version>1.5.9.RELEASE</version>
     </parent>
 
     <groupId>be.axxes.traineeship.java.testing</groupId>
@@ -24,8 +24,9 @@
         <!-- dependency versions -->
         <cucumber-java.version>1.2.5</cucumber-java.version>
         <selenium-java.version>3.3.1</selenium-java.version>
-        <bonigarcia.webdrivermanager.version>1.6.1</bonigarcia.webdrivermanager.version>
+        <bonigarcia.webdrivermanager.version>2.0.1</bonigarcia.webdrivermanager.version>
         <commons-logging.version>1.2</commons-logging.version>
+        <guava.version>22.0</guava.version>
     </properties>
 
     <modules>
@@ -72,6 +73,12 @@
                 <groupId>commons-logging</groupId>
                 <artifactId>commons-logging</artifactId>
                 <version>${commons-logging.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
             </dependency>
 
         </dependencies>

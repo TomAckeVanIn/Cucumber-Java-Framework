@@ -1,10 +1,13 @@
 package be.axxes.traineeship.java.testing.cucumber.steps;
 
 import be.axxes.traineeship.java.testing.AbstractSeleniumTest;
+import be.axxes.traineeship.java.testing.cucumber.CucumberContext;
+import be.axxes.traineeship.java.testing.cucumber.Keys;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.List;
 
@@ -17,32 +20,19 @@ public class CreateAccountWidgetSteps extends AbstractSeleniumTest {
         initializePageObjects();
     }
 
-    @And("^navigates to the create account page (.*)$")
-    public void navigatesToTheCreateAccountPage(String Email) throws Throwable {
+
+    @And("^navigates to the create account page$")
+    public void navigatesToTheCreateAccountPage() throws Throwable {
         signInWidget()
-                .enterEmailAddress(Email)
+                .enterEmailAddress(CucumberContext.getValue(Keys.Account_Email))
                 .goToAccountCreation();
         assertThat(createAccountWidget().isCreateAccountWidgetDisplayed()).isTrue();
-    }
 
-    @When("^the user enters an email address (.*)$")
-    public void theUserEntersAnEmailAddress(String Email1) throws Throwable {
-        signInWidget().enterEmailAddress(Email1);
-    }
-
-    @And("^clicks on the create account button$")
-    public void clicksOnTheCreateAccountButton() throws Throwable {
-        signInWidget().goToAccountCreation();
-    }
-
-    @Then("^the create account widget is opened$")
-    public void theCreateAccountWidgetIsOpened() throws Throwable {
-        assertThat(createAccountWidget().isCreateAccountWidgetDisplayed()).isTrue();
     }
 
     @When("^the user enters all required personal information fields:$")
-    public void theUserEntersAllRequiredPersonalInformationFields(List<String> AccountCreationInfo) throws Throwable {
-        createAccountWidget().enterPersonalInformation(AccountCreationInfo);
+    public void theUserEntersAllRequiredPersonalInformationFields(List<String> accountCreationInfo) throws Throwable {
+        createAccountWidget().enterPersonalInformation(accountCreationInfo);
     }
 
     @And("^the user enters all required address information fields (.*)$")
