@@ -24,7 +24,7 @@ public class CreateAccountWidgetSteps extends AbstractSeleniumTest {
     @And("^navigates to the create account page$")
     public void navigatesToTheCreateAccountPage() throws Throwable {
         signInWidget()
-                .enterEmailAddress(CucumberContext.getValue(Keys.Account_Email))
+                .enterEmailAddress(CucumberContext.getValue(Keys.ACCOUNT_EMAIL))
                 .goToAccountCreation();
         assertThat(createAccountWidget().isCreateAccountWidgetDisplayed()).isTrue();
 

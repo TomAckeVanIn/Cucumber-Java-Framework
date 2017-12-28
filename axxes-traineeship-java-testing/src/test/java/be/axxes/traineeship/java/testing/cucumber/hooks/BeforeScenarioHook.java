@@ -7,24 +7,34 @@ import cucumber.api.java.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class BeforeScenarioHook {
 
     @Value("${app.url}")
     private String appUrl;
 
-    @Value("${app.data}")
-    private String accountEmail;
+    @Value("#{'${app.data}'.split(',')}")
+    private List<String> data;
 
     @Autowired
-    private WebDriverFactory webDriverFactory;
-
-    @Before
-    public void goToHomePage() {
-        webDriverFactory.getWebDriver().get(appUrl);
-    }
+    private WebDriverFactory factory;
 
     @Before
     public void setDataKeys() {
-        CucumberContext.putValue(Keys.Account_Email, accountEmail);
+        ArrayList<Keys> keyList = new ArrayList<>(Arrays.asList(Keys.values()));
+
+        for (int i =0; i < data.size(); i++){
+            CucumberContext.putValue(keyList.get(i), data.get(i));
+        }
     }
+
+    @Before
+    public void goToHomePage() {
+        factory.getWebDriver().get(appUrl);
+    }
+
+
 }

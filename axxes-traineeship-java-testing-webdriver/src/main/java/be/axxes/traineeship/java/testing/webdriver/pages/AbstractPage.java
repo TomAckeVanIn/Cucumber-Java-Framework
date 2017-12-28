@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class AbstractPage {
@@ -39,6 +41,10 @@ public class AbstractPage {
         }
     }
 
+    protected boolean isSelected(final WebElement parent, By by){
+        return waitFor(parent, by).isSelected();
+    }
+
     protected void typeInto(final WebElement parent, final By by, final String value) {
         waitFor(waitFor(parent, by)).sendKeys(value);
     }
@@ -50,6 +56,14 @@ public class AbstractPage {
 
     protected String getAttributeValue (final WebElement parent, final By by, String Attribute){
         return waitFor(parent,by).getAttribute(Attribute);
+    }
+
+    protected List<WebElement> findElements (final WebElement parent, final By by){
+        return waitFor(parent, by).findElements(by);
+    }
+
+    protected void clearContent(final WebElement parent, final By by){
+        waitFor(parent, by).clear();
     }
 
     private WebElement waitFor(final WebElement parent, final By by) {
