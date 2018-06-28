@@ -5,14 +5,8 @@ import be.axxes.traineeship.java.testing.cucumber.CucumberContext;
 import be.axxes.traineeship.java.testing.webdriver.WebDriverFactory;
 import be.axxes.traineeship.java.testing.webdriver.config.SeleniumConfig;
 import be.axxes.traineeship.java.testing.webdriver.pages.AbstractPage;
-import be.axxes.traineeship.java.testing.webdriver.pages.AccountPage;
-import be.axxes.traineeship.java.testing.webdriver.pages.CheckoutWidget;
-import be.axxes.traineeship.java.testing.webdriver.pages.ContactUsWidget;
-import be.axxes.traineeship.java.testing.webdriver.pages.CreateAccountWidget;
 import be.axxes.traineeship.java.testing.webdriver.pages.HomePage;
-import be.axxes.traineeship.java.testing.webdriver.pages.ItemDetailPage;
 import be.axxes.traineeship.java.testing.webdriver.pages.SignInWidget;
-import be.axxes.traineeship.java.testing.webdriver.pages.WomenClothingPage;
 //import com.gargoylesoftware.htmlunit.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -39,33 +33,10 @@ public abstract class AbstractSeleniumTest {
         return getPageObject(HomePage.class);
     }
 
-    protected ContactUsWidget contactUsWidget() {
-        return getPageObject(ContactUsWidget.class);
-    }
-
     protected SignInWidget signInWidget() {
         return getPageObject(SignInWidget.class);
     }
 
-    protected CreateAccountWidget createAccountWidget() {
-        return getPageObject(CreateAccountWidget.class);
-    }
-
-    protected AccountPage accountPage() {
-        return getPageObject(AccountPage.class);
-    }
-
-    protected CheckoutWidget checkoutWidget() {
-        return getPageObject(CheckoutWidget.class);
-    }
-
-    protected WomenClothingPage womenClothingPage() {
-        return getPageObject(WomenClothingPage.class);
-    }
-
-    protected ItemDetailPage itemDetailPage() {
-        return getPageObject(ItemDetailPage.class);
-    }
 
     private <T extends AbstractPage> T getPageObject(Class<T> PageObjectClassType) {
         return (T) pages
@@ -80,13 +51,7 @@ public abstract class AbstractSeleniumTest {
             pages = Collections.unmodifiableList(
                         Stream.of(
                                 new HomePage(factory.getWebDriver()),
-                                new ContactUsWidget(factory.getWebDriver()),
-                                new SignInWidget(factory.getWebDriver()),
-                                new CreateAccountWidget(factory.getWebDriver()),
-                                new AccountPage(factory.getWebDriver()),
-                                new CheckoutWidget(factory.getWebDriver()),
-                                new WomenClothingPage(factory.getWebDriver()),
-                                new ItemDetailPage(factory.getWebDriver()))
+                                new SignInWidget(factory.getWebDriver()))
                         .collect(Collectors.toList()));
         }
     }

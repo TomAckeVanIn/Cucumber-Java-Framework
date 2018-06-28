@@ -7,25 +7,34 @@ import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends AbstractPage {
 
-    @FindBy(id = "header")
-    private WebElement parent;
+    @FindBy(id = "CybotCookiebotDialogBody")
+    private WebElement cookiePopup;
+
+    @FindBy(id = "maincontent")
+    private WebElement content;
+
+    @FindBy(className = "page-header")
+    private WebElement signInSection;
+
 
     public HomePage(final WebDriver webDriver) {
         super(webDriver);
     }
 
-    public HomePage clickContactUsButton() {
-        click(parent, By.id("contact-link"));
-        return this;
+    public boolean isHomePageDisplayed(){
+        return isDisplayed(content);
     }
 
-    public HomePage clickSignUpButton() {
-        click(parent, By.className("login"));
-        return this;
+    public boolean isUserLoggedOn(){
+        return isDisplayed(signInSection, By.className("customer-name"));
     }
 
-    public HomePage clickWomenCLothingButton() {
-        click(parent, By.cssSelector("a[title='Women']"));
-        return this;
+    public void clickSignUpButton() {
+        click(signInSection, By.className("authorization-link"));
     }
+
+    public void clickCloseCookiePopup(){
+        click(cookiePopup, By.id("CybotCookiebotDialogBodyLevelButtonAccept"));
+    }
+
 }

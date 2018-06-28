@@ -8,38 +8,24 @@ import org.openqa.selenium.support.FindBy;
 
 public class SignInWidget extends AbstractPage {
 
-    @FindBy(id = "authentication")
-    private WebElement parent;
+    @FindBy(className = "login-container")
+    private WebElement signIn;
 
     public SignInWidget(WebDriver driver) {
         super(driver);
     }
 
     public boolean isSignUpWidgetDisplayed(){
-        return isDisplayed(parent);
+        return isDisplayed(signIn);
     }
 
-    public SignInWidget enterEmailAddress(String EmailCreate){
-        typeInto(parent, By.id("email_create"), EmailCreate);
-        return this;
-    }
-
-    public void goToAccountCreation(){
-        click(parent, By.id("SubmitCreate"));
-    }
-
-    public SignInWidget enterEmailAddressSignIn(String EmailSignIn){
-        typeInto(parent, By.id("email"), EmailSignIn);
-        return this;
-    }
-
-    public SignInWidget enterPasswordSignIn(String PasswordSignIn){
-        typeInto(parent, By.id("passwd"), PasswordSignIn);
-        return this;
+    public void fillOutCredentials(String login, String password){
+        typeInto(signIn, By.id("email"), login);
+        typeInto(signIn, By.id("pass"), password);
     }
 
     public void clickSignIn(){
-        click(parent, By.id("SubmitLogin"));
+        click(signIn, By.id("send2"));
     }
 }
 

@@ -4,7 +4,7 @@ Feature: Buying products
 
   Background: The user is logged on
     When the user navigates to the logon page
-    And the user logs on using his credentials Tester Axxes 1234Test
+    And the user logs on using his credentials
     Then the user should be logged on successfully
 
 
