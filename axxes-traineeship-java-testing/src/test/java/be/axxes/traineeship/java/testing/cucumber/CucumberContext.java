@@ -16,10 +16,6 @@ public class CucumberContext {
         return (T) values.get(key);
     }
 
-    public static String getValueAsString(final Keys key) {
-        return (String) getValue(key);
-    }
-
     public void clear() {
         values.clear();
     }

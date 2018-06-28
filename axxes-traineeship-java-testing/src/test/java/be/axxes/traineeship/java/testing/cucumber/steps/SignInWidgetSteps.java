@@ -1,6 +1,7 @@
 package be.axxes.traineeship.java.testing.cucumber.steps;
 
 import be.axxes.traineeship.java.testing.AbstractSeleniumTest;
+import cucumber.api.PendingException;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -16,29 +17,19 @@ public class SignInWidgetSteps extends AbstractSeleniumTest {
         initializePageObjects();
     }
 
-    @Given("^the user is on the sign up page$")
-    public void theUserIsOnTheSignUpPageAndHasAnAccount() throws Throwable {
-        homePage().clickSignUpButton();
-        assertThat(signInWidget().isSignUpWidgetDisplayed()).isTrue();
+    @When("^the user navigates to the logon page$")
+    public void theUserNavigatesToTheLogonPage() throws Throwable {
+
     }
 
-    @When("^I enter a valid email address (.*)$")
-    public void iEnterAValidEmailAddress(String Email) throws Throwable {
-        signInWidget().enterEmailAddressSignIn(Email);
+    @And("^the user logs on using his credentials (.*)(.*)$")
+    public void theUserLogsOnUsingHisCredentialsTesterAxxesTest(int arg0) throws Throwable {
+
     }
 
-    @And("^I enter a valid password (.*)$")
-    public void iEnterAValidPassword(String Password) throws Throwable {
-        signInWidget().enterPasswordSignIn(Password);
+    @Then("^the user should be logged on successfully$")
+    public void theUserIsSuccessfullyLoggedIn() throws Throwable {
+
     }
 
-    @And("^I click the submit button$")
-    public void iClickTheSubmitButton() throws Throwable {
-        signInWidget().clickSignIn();
-    }
-
-    @Then("^I am signed in to the application$")
-    public void iAmSignedInToTheApplication() throws Throwable {
-        assertThat(accountPage().accountPageDisplayed()).isTrue();
-    }
 }
